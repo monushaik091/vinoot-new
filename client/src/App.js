@@ -3,9 +3,10 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from './Reception/sidebar';
 import NotFound from './pages/NotFound';
-
+import PrivateRoute from './MasterLogin/PrivateRoute';
 import RegisterPage from './MasterLogin/RegisterPage';
 import LoginPage from './MasterLogin/LoginPage';
+import MasterUserT from './MasterLogin/MasterUserT';
 
 
 function App() {
@@ -18,10 +19,12 @@ function App() {
     <Route path="/" element={<LoginPage/>}/>
 
       
-    
+    <Route element={<PrivateRoute/>}>
   
       <Route path="/Sidebar" element={<Sidebar/>}/>
+      <Route path="/MasterUsert" element={<MasterUserT/>}/>
 
+</Route>
       
       <Route path="*" element={<NotFound />} />
     </Routes>

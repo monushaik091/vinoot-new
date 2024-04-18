@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     username: '',
@@ -14,6 +16,7 @@ const RegisterPage = () => {
     confirmPassword: '',
     gender: '',
     userType: 'Master', // Assuming there's a default user type
+    activeChangedBy: 'none',
   });
 
   const handleChange = (e) => {
@@ -25,6 +28,7 @@ const RegisterPage = () => {
     try {
       const res = await axios.post('http://localhost:5000/api/register', formData);
       console.log('User registered:', res.data);
+        navigate('/')
       // Optionally, you can redirect the user to another page after successful registration
     } catch (error) {
       console.error('Registration failed:', error.response.data.error);

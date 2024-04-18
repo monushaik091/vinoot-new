@@ -24,3 +24,27 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ error: 'Server Error' });
   }
 };
+
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+exports.updateUserActiveState = async (req, res) => {
+  const { id } = req.params;
+  const { isActive, updatedBy } = req.body; // Updated by information
+  try {
+    // Update active state and updated by information
+    await User.findByIdAndUpdate(id, { isActive, activeChangedBy: updatedBy, activeChangedAt: Date.now() });
+    res.status(200).json({ message: 'User active state updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
