@@ -7,7 +7,7 @@ import PrivateRoute from './MasterLogin/PrivateRoute';
 import RegisterPage from './MasterLogin/RegisterPage';
 import LoginPage from './MasterLogin/LoginPage';
 import MasterUserT from './MasterLogin/MasterUserT';
-
+import LoginForm from './Login/LoginForm';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
     <Routes>
  
     <Route path="/reg" element={<RegisterPage/>}/>
-    <Route path="/" element={<LoginPage/>}/>
-
+    {/* <Route path="/" element={<LoginPage/>}/> */}
+    <Route path="/" element={<LoginForm/>}/>
       
     <Route element={<PrivateRoute/>}>
   
